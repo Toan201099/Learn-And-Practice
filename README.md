@@ -1,2 +1,2 @@
-# C-
+# C++
 Repository learning c++
