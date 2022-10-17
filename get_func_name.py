@@ -73,7 +73,7 @@ def is_func(line):
         if type_a in line_split[0]:
             has_type = True
     if bracket_num == 1:
-        for index in range(len(line_split)):
+        for index in xrange(len(line_split)):
             if '(' in line_split[index]:
                 return line_split[index - 1]
     else:
@@ -99,7 +99,6 @@ def get_line_type(line):
     return "other"
 
 def is_comment_end(line):
-    #print line
     line = line.strip()
     if line.endswith('*/'):
         return True
