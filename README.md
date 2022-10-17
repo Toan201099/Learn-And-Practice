@@ -1,13 +1,8 @@
-# Data Structure and Algorithms in Python
-1.1 Python Overview
-1.2 Object in Python
-1.3 Expression, Operators and Precedencec
-1.4 Control Flow
-1.5 Functions
-1.6 Simple Input and Output
-1.7 Exception Handing
-1.8 Iterator and Generators 
-1.9 Addition Python Conveniences
-1.10 Scopes and Namespaces
-1.12 Exercies
-
+#Project refer 
+# Extract Function Name and Begin/End Line Number in C/C++ Source Codes
+This is a simple project to find the function names in C/C++ source codes. It should work well for C codes, but may have problems for C++ codes. It is written in Python. Please let me know if you find any bugs.
+1. get_func_name.py
+Usage:
+    command line: python get_func_name.py <file_path> <output_file>
+    <file_path> is the source code file (e.g. helloWorld.c) you want to find.
+    <output_file> is the file to store the result
