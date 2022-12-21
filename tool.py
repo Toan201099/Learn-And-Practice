@@ -35,7 +35,8 @@ for j in range(len(array1)):
     cell_obj = (sheet_obj.cell(row = j+1, column = 2))
     #print(cell_obj.value)
     if cell_obj.value == None:
-        cell_obj.value = "File Name:" + array1[j]
+        cell_obj.value = "File Name:" + array1[j] + '\n'+"Document fun name: " +array2[j]
+        #cell_obj.value = "Document fun name: "+ array2[j]
         print(cell_obj.value)
 wb_obj.save(file_path + "\data.xlsx")
 
