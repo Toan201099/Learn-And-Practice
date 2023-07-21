@@ -1,46 +1,41 @@
 import openpyxl
 import os 
 import os.path 
-
 from openpyxl import Workbook
 
-# get path  
+def getdata():
+    list_data = []
+    list_data1=[]
+    wb = openpyxl.load_workbook("F:\Learn-And-Practice\data\data1.XLSX")
+    sheet_obj = wb.active
+    max_col = sheet_obj.max_column
+    # Loop will print all columns name
+    for i in range(1, max_col + 1):
+        cell_obj = sheet_obj.cell(row = i, column = 1)
+        cell_obj1 = sheet_obj.cell(row = i, column = 2)
+        list_data.append(cell_obj.value)
+        list_data1.append(cell_obj1.value)
+    wb.close()
+    return list_data, list_data1
+def unitTestcase():
+    ut_wb = openpyxl.load_workbook("F:\Learn-And-Practice\data.xlsx")
+    ws = ut_wb.create_sheet("Unit TestCase")
+    ut_wb.save("F:\Learn-And-Practice\data.xlsx")
+    ut_wb.close()
 
-file_path = os.getcwd()
+def writeData(data,data2):
+    wb=openpyxl.load_workbook("F:\Learn-And-Practice\data.xlsx")
+    ws=wb["Unit TestCase"]
+    for i in range(len(data)):
+        writer_value=ws.cell(row=i+1,column=2)
+        writer_value.value=data[i]
+        writer_value=ws.cell(row=i+1,column=3)
+        writer_value.value=data2[i]
+    wb.save("F:\Learn-And-Practice\data.xlsx")
+    wb.close()
 
-# Give the location of the file
-"""
-
-library https://openpyxl.readthedocs.io/en/latest/usage.html
-"""
-wb = openpyxl.Workbook()
-# workbook object is created read file excel 
-
-wb_obj = openpyxl.load_workbook(file_path + "/data.xlsx")
-
-sheet_obj = wb_obj.active
-
-m_row = sheet_obj.max_row
-
-# write file excel 
-
-array1 = ["a.c", "a.c", "a.c", "b.c", "c.c", "c.c"]
-
-array2 = ["func1", "func11", "func12", "funcb", "funcc", "funccc"]
-
-# for i in range(1, m_row + 1):
-		
-# 		cell_obj = (sheet_obj.cell(row = i, column = 2))
-for j in range(len(array1)):
-    cell_obj = (sheet_obj.cell(row = j+1, column = 2))
-    #print(cell_obj.value)
-    if cell_obj.value == None:
-        cell_obj.value = "File Name:" + array1[j] + '\n'+"Document fun name: " +array2[j]
-        #cell_obj.value = "Document fun name: "+ array2[j]
-        print(cell_obj.value)
-wb_obj.save(file_path + "\data.xlsx")
-
-
-
-
-
+def main():
+    data,data2=getdata()
+    unitTestcase()
+    writeData(data,data2)
+main()
